@@ -26,8 +26,9 @@
 
 
 \hypersetup{
-    colorlinks=true,   
-    urlcolor=Blue,
+    colorlinks = true,   
+    urlcolor = Blue,
+    linkcolor = Black
     }
 
 \hbadness=99999
@@ -45,7 +46,7 @@
     August\or September\or October\or November\or December\fi \space \number\year}
 
 % CV Header
-\newcommand{\cvheader}{
+\newcommand{\cvheader}{%
     \begin{center}
     {\LARGE \@name}\vspace{1em}
 
@@ -58,7 +59,7 @@
 }
 
 % CV Contact
-\newcommand{\cvcontact}{
+\newcommand{\cvcontact}{%
     \hrule
     \vspace{2ex}
     \cventry{\textbf{Contact}}{\@name\\ \@address}{}   
@@ -66,15 +67,19 @@
 
 
 % CV Section
-\newcommand{\cvsection}[1]{
+%	#1 section title
+\newcommand{\cvsection}[1]{%
     \textbf{\large #1} 
     \vspace{1ex}
     \hrule
     \vspace{1.5ex}
 }
 
-% CV Entry
-\newcommand{\cventry}[3]{
+% CV Entry (three columns)
+%	#1 left (narrow) column
+% 	#2 middle (wide) column
+%   #3 right (narrow) column
+\newcommand{\cventry}[3]{%
     \begin{minipage}[t]{0.25\textwidth}
         #1
     \end{minipage}
@@ -88,8 +93,10 @@
     \end{minipage}
 }
 
-% CV Entry 2
-\newcommand{\cvinterests}[1]{
+% CV Entry 2 (two columns)
+%	#1 left (narrow) column
+% 	#2 right (wide) column
+\newcommand{\cvinterests}[1]{%
     \begin{minipage}[t]{0.25\textwidth}
         \textbf{Research Interests:}
     \end{minipage}
@@ -98,7 +105,23 @@
     \end{minipage}\\
 }
 
+% Work in progress:
+%	#1 title
+% 	#2 coauthors (can be left blank) 
+\newcommand{\progress}[2]{%
+#1%
+\if\relax\detokenize{#2}\relax % Check if the second argument is empty
+\else
+  , \textit{with #2}%
+\fi
+.\\
+}
+
+
 %  CV Footer
+%	#1 left footer
+% 	#2 middle footer
+%   #3 right footer
 \newcommand*{\cvfooter}[3]{%
   \fancyfoot{}
   \fancyfoot[L]{#1}
