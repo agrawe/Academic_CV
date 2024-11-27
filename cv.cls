@@ -48,7 +48,7 @@
 % CV Header
 \newcommand{\cvheader}{%
     \begin{center}
-    {\LARGE \@name}\vspace{1em}
+    {\huge \@name}\vspace{1ex}
 
     \@inst
 
@@ -62,7 +62,8 @@
 \newcommand{\cvcontact}{%
     \hrule
     \vspace{2ex}
-    \cventry{\textbf{Contact}}{\@name\\ \@address}{}   
+    \cventry{\textbf{Contact}}{\@name\\
+     \@address}{}   
 }
 
 
@@ -107,7 +108,7 @@
 
 % Work in progress:
 %	#1 title
-% 	#2 coauthors (can be left blank) 
+% 	#2 coauthors (can be left) 
 \newcommand{\progress}[2]{%
 #1%
 \if\relax\detokenize{#2}\relax % Check if the second argument is empty
