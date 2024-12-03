@@ -1,49 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Custom LaTeX Academic CV Class             %
+%                 Created by Alexander Grawe               %
+%                  Last edited: 2024-03-12                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%% Set up class %%%%%%%%%%%%%%%%%%%%%%%
 % Load Class, pass specified options to loaded class, 
+% extarticle includes more font sizes than article
 \LoadClassWithOptions{extarticle}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cv}[custom cv class]
 %\renewcommand{\familydefault}{\sfdefault}
 
-% Packages
-\RequirePackage{geometry}
-\RequirePackage{hyperref}
-\RequirePackage{libertine}
-\RequirePackage[dvipsnames]{xcolor}
-\RequirePackage{fancyhdr}
+%%%%%%%%%%%%%%%%%%%%%%% Load packages %%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{geometry}           % Margins etc.
+\RequirePackage{hyperref}           % Hyperlinks
+\RequirePackage{libertine}          % Libertine fonts
+\RequirePackage[dvipsnames]{xcolor} % Extra colors
+\RequirePackage{fancyhdr}           % Fancy headers
 %\RequirePackage{setspace}
 
-% Set parameters
+%%%%%%%%%%%%%%%%%%%%%%% Set options %%%%%%%%%%%%%%%%%%%%%%%%
+
+% Margins
 \geometry{a4paper, margin = 2cm}
+
+% Paragraph indent
 \setlength{\parindent}{0ex} 
 
 % Set offset to each header and footer
 \fancyhfoffset{0em}
+
 % Remove head rule
 \renewcommand{\headrulewidth}{0pt}
+
 % Clear all header & footer fields
 \fancyhf{}
 \pagestyle{fancy}
 
-
+% Hyperlinks
 \hypersetup{
     colorlinks = true,   
     urlcolor = Blue,
     linkcolor = Black
     }
 
+% Suppress underfull hbox warnings
 \hbadness=99999
 
-% Define inputs
-\newcommand*{\name}[1]{\def\@name{#1}}
-\newcommand{\inst}[1]{\def\@inst{#1}}
-\newcommand{\email}[1]{\def\@email{#1}}
-\newcommand{\website}[1]{\def\@website{#1}}
-\newcommand{\address}[1]{\def\@address{#1}}
+%%%%%%%%%%%%%%%%%%%%%% Define inputs %%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\name}[1]{\def\@name{#1}}      % Full name
+\newcommand{\inst}[1]{\def\@inst{#1}}       % Institution
+\newcommand{\email}[1]{\def\@email{#1}}     % Email address
+\newcommand{\website}[1]{\def\@website{#1}} % Website URL
+\newcommand{\address}[1]{\def\@address{#1}} % Address
+
+%%%%%%%%%%%%%%%%% Define one-time commands %%%%%%%%%%%%%%%%%
 
 % Current Month and Year
 \newcommand*{\printdate}{%
-   \ifcase \month\or January\or February\or March\or April\or May\or June\or July\or
-    August\or September\or October\or November\or December\fi \space \number\year}
+   \ifcase \month\or January\or February\or March\or 
+   April\or May\or June\or July\or August\or September\or 
+   October\or November\or December\fi \space \number\year}
 
 % CV Header
 \newcommand{\cvheader}{%
@@ -66,6 +86,7 @@
      \@address}{}   
 }
 
+%%%%%%%%%%%%%%% Define multiple-use commands %%%%%%%%%%%%%%%
 
 % CV Section
 %	#1 section title
@@ -108,16 +129,16 @@
 
 % Work in progress:
 %	#1 title
-% 	#2 coauthors (can be left) 
+% 	#2 coauthors (can be left empty) 
 \newcommand{\progress}[2]{%
 #1%
-\if\relax\detokenize{#2}\relax % Check if the second argument is empty
+% Check if second argument is empty
+\if\relax\detokenize{#2}\relax 
 \else
   , \textit{with #2}%
 \fi
 .\\
 }
-
 
 %  CV Footer
 %	#1 left footer
