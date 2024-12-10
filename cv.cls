@@ -120,7 +120,7 @@
 % 	#2 right (wide) column
 \newcommand{\cvinterests}[1]{%
     \begin{minipage}[t]{0.25\textwidth}
-        \textbf{Research Interests:}
+        \textbf{Research Interests}
     \end{minipage}
     \begin{minipage}[t]{0.74\textwidth}
         #1
