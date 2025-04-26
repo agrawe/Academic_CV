@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %               Custom LaTeX Academic CV Class             %
 %                 Created by Alexander Grawe               %
-%                  Last edited: 2024-03-12                 %
+%                  Last edited: 2025-04-26                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%% Set up class %%%%%%%%%%%%%%%%%%%%%%%
@@ -19,7 +19,7 @@
 \RequirePackage{libertine}          % Libertine fonts
 \RequirePackage[dvipsnames]{xcolor} % Extra colors
 \RequirePackage{fancyhdr}           % Fancy headers
-%\RequirePackage{setspace}
+\RequirePackage{setspace}
 
 %%%%%%%%%%%%%%%%%%%%%%% Set options %%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -28,6 +28,9 @@
 
 % Paragraph indent
 \setlength{\parindent}{0ex} 
+
+% Line spacing
+\setstretch{1.15}
 
 % Set offset to each header and footer
 \fancyhfoffset{0em}
@@ -86,11 +89,23 @@
      \@address}{}   
 }
 
+%  CV Footer
+%	#1 left footer
+% 	#2 middle footer
+%   #3 right footer
+\newcommand*{\cvfooter}[3]{%
+  \fancyfoot{}
+  \fancyfoot[L]{#1}
+  \fancyfoot[C]{#2}
+  \fancyfoot[R]{#3}
+}
+
 %%%%%%%%%%%%%%% Define multiple-use commands %%%%%%%%%%%%%%%
 
 % CV Section
 %	#1 section title
 \newcommand{\cvsection}[1]{%
+    \vspace{1ex}
     \textbf{\large #1} 
     \vspace{1ex}
     \hrule
@@ -118,12 +133,26 @@
 % CV Entry 2 (two columns)
 %	#1 left (narrow) column
 % 	#2 right (wide) column
-\newcommand{\cvinterests}[1]{%
+\newcommand{\cventrytwo}[2]{%
     \begin{minipage}[t]{0.25\textwidth}
-        \textbf{Research Interests}
+        \textbf{#1}
     \end{minipage}
     \begin{minipage}[t]{0.74\textwidth}
+        #2
+    \end{minipage}\\
+}
+
+% CV Entry 3 (two columns)
+%	#1 left (wide) column
+% 	#2 right (narrow) column
+\newcommand{\cventrythree}[2]{%
+    \begin{minipage}[t]{0.84\textwidth}
         #1
+    \end{minipage}
+    \begin{minipage}[t]{0.15\textwidth}
+        \begin{flushright}
+            #2
+        \end{flushright}
     \end{minipage}\\
 }
 
@@ -138,15 +167,4 @@
   , \textit{with #2}%
 \fi
 .\\
-}
-
-%  CV Footer
-%	#1 left footer
-% 	#2 middle footer
-%   #3 right footer
-\newcommand*{\cvfooter}[3]{%
-  \fancyfoot{}
-  \fancyfoot[L]{#1}
-  \fancyfoot[C]{#2}
-  \fancyfoot[R]{#3}
 }
