@@ -20,6 +20,7 @@
 \RequirePackage[dvipsnames]{xcolor} % Extra colors
 \RequirePackage{fancyhdr}           % Fancy headers
 \RequirePackage{setspace}
+\RequirePackage[super]{nth}
 
 %%%%%%%%%%%%%%%%%%%%%%% Set options %%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -45,7 +46,7 @@
 % Hyperlinks
 \hypersetup{
     colorlinks = true,   
-    urlcolor = Blue,
+    urlcolor = Maroon,
     linkcolor = Black
     }
 
